@@ -13,6 +13,7 @@ return new class extends Migration {
             $table->timestamp('tanggal_transaksi')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->decimal('jumlah_transaksi', 10, 2);
             $table->unsignedBigInteger('id_user');
+            $table->unsignedBigInteger('id')->nullable();
             $table->string('no_whatsapp');
             $table->string('status')->default('pending');
             $table->unsignedBigInteger('id_method');
