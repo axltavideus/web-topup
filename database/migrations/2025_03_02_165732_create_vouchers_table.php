@@ -8,14 +8,13 @@ return new class extends Migration {
     public function up()
     {
         Schema::create('vouchers', function (Blueprint $table) {
-            $table->id();
+            $table->id('id_voucher');
             $table->string('code')->unique();
-            $table->decimal('discount', 8, 2);
-            $table->decimal('min_transaction', 10, 2)->nullable();
-            $table->decimal('max_discount', 10, 2)->nullable();
+            $table->decimal('discount', 5, 2);
+            $table->decimal('min_transaction', 10, 2);
+            $table->decimal('max_discount', 10, 2);
             $table->integer('limit')->default(1);
-            $table->foreignId('game')->nullable()->constrained('games')->onDelete('set null');
-            $table->timestamps();
+            $table->string('game')->nullable();
         });
     }
 
