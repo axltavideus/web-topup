@@ -25,6 +25,10 @@
         .sidebar a:hover {
             background-color: #495057;
         }
+        .sidebar a.active {
+            background-color: #495057; /* Warna lebih gelap */
+            font-weight: bold; /* Opsional: tebal untuk menonjolkan */
+        }
         .main-content {
             margin-left: 250px;
             padding: 20px;
@@ -33,8 +37,8 @@
 </head>
 <body>
     <div class="sidebar">
-        <a href="{{ route('admin.dashboard') }}">Dashboard</a>
-        <a href="{{ route('admin.banners.index') }}">Banners</a>
+        <a href="{{ route('admin.dashboard') }}" class="{{ request()->is('admin/dashboard') ? 'active' : '' }}">Dashboard</a>
+        <a href="{{ route('admin.banners.index') }}" class="{{ request()->is('admin/banners*') ? 'active' : '' }}">Banners</a>
     </div>
 
     <div class="main-content">
