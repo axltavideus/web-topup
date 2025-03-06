@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('games');
             $table->string('category');
-            $table->string('image');
+            $table->string('image')->nullable();
             $table->string('slug');
             $table->string('content');
             $table->timestamps();
