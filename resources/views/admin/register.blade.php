@@ -4,10 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Registration</title>
+    <script>
+        function validateForm(event) {
+            const password = document.getElementById("password").value;
+            const passwordWarning = document.getElementById("password-warning");
+
+            if (password.length < 6) {
+                event.preventDefault(); // Prevent form submission
+                passwordWarning.textContent = "Password must be at least 6 characters long.";
+                passwordWarning.style.color = "red";
+            } else {
+                passwordWarning.textContent = ""; // Clear warning if valid
+            }
+        }
+    </script>
 </head>
 <body>
     <h1>Admin Registration</h1>
-    <form action="{{ route('admin.register') }}" method="POST">
+    <form action="{{ route('admin.register') }}" method="POST" onsubmit="validateForm(event)">
         @csrf
         <div>
             <label for="admin_name">Admin Name:</label>
@@ -20,6 +34,7 @@
         <div>
             <label for="password">Password:</label>
             <input type="password" name="password" id="password" required>
+            <p id="password-warning" style="margin: 5px 0; font-size: 14px; color: red;"></p>
         </div>
         <div>
             <label for="password_confirmation">Confirm Password:</label>

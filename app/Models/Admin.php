@@ -18,10 +18,4 @@ class Admin extends Authenticatable
     protected $hidden = [
         'password',
     ];
-
-    // Mutator untuk hash password
-    public function setPasswordAttribute($value)
-    {
-        $this->attributes['password'] = Hash::make($value);
-    }
 }
