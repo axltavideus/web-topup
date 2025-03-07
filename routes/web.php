@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminAuthController;
 use App\Http\Controllers\Admin\BannerController;
+use App\Http\Controllers\Admin\UserController;
 
 Route::prefix('admin')->group(function () {
     Route::get('/login', [AdminAuthController::class, 'showLoginForm'])->name('admin.login');
@@ -14,6 +15,9 @@ Route::prefix('admin')->group(function () {
     Route::get('/dashboard', function () {
         return view('admin.dashboard');
     })->name('admin.dashboard');
+
+    Route::get('/users', [UserController::class, 'index'])->name('admin.users.index');
+    Route::delete('/users/{id_user}', [UserController::class, 'destroy'])->name('admin.users.destroy');
 });
 
 Route::prefix('admin')->group(function () {
