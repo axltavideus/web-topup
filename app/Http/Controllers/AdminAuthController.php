@@ -46,7 +46,7 @@ class AdminAuthController extends Controller
         // Jika admin ditemukan dan password cocok (dengan hashing)
         if ($admin && Hash::check($request->password, $admin->password)) {
             Auth::guard('admin')->login($admin);
-            return redirect()->route('admin.register');
+            return redirect()->route('admin.dashboard');
         }        
 
         return back()->withErrors(['login_error' => 'Invalid credentials'])->withInput();
