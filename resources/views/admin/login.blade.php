@@ -7,6 +7,11 @@
 </head>
 <body>
     <h1>Admin Login</h1>
+    @if ($errors->has('login_error'))
+        <div style="color: red; padding: 10px; border: 1px solid red; margin-bottom: 10px;">
+            {{ $errors->first('login_error') }}
+        </div>
+    @endif
     <form action="{{ route('admin.login') }}" method="POST">
         @csrf
         <div>

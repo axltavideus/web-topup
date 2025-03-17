@@ -14,8 +14,7 @@ return new class extends Migration {
             $table->string('email', 255)->unique();
             $table->string('no_telp', 255);
             $table->string('password');
-            $table->unsignedBigInteger('id_transaksi')->nullable();
-            $table->timestamp('date_created')->default(DB::raw('CURRENT_TIMESTAMP'));
+            $table->timestamps();
         });
     }
 
